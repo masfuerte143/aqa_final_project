@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from base.locators import RegistrationPageLocators
 from pages.base_page import BasePage
 
 
@@ -13,45 +14,46 @@ class RegistrationPage(BasePage):
         super().__init__(driver)
 
     region_text = ""
+
     # Геттеры
     def get_first_name_filed(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_firstname']")
+        return self.driver.find_element(*RegistrationPageLocators.FIRST_NAME_FIELD)
 
     def get_last_name_filed(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_lastname']")
+        return self.driver.find_element(*RegistrationPageLocators.LAST_NAME_FIELD)
 
     def get_email_filed(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_email']")
+        return self.driver.find_element(*RegistrationPageLocators.EMAIL_FIELD)
 
     def get_phone_filed(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_telephone']")
+        return self.driver.find_element(*RegistrationPageLocators.PHONE_FIELD)
 
     def get_password_filed(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_password']")
+        return self.driver.find_element(*RegistrationPageLocators.PASS_FIELD)
 
     def get_confirm_password_filed(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_confirm_password']")
+        return self.driver.find_element(*RegistrationPageLocators.CONFIRM_PASS_FIELD)
 
     def get_region_selector(self):
-        return self.driver.find_element(By.XPATH, "//select[@id='register_zone_id']")
+        return self.driver.find_element(*RegistrationPageLocators.REGION_SELECTOR)
 
     def get_region_moscow(self):
-        return self.driver.find_element(By.XPATH, "//option[@value='2761']")
+        return self.driver.find_element(*RegistrationPageLocators.MOSCOW_IN_SELECTOR)
 
     def get_city_field(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_city']")
+        return self.driver.find_element(*RegistrationPageLocators.CITY_FIELD)
 
     def get_subscription_no(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='register_newsletter_1']")
+        return self.driver.find_element(*RegistrationPageLocators.NO_SUBCR_RADIO)
 
     def get_registration_button(self):
-        return self.driver.find_element(By.CSS_SELECTOR, "#simpleregister_button_confirm")
+        return self.driver.find_element(*RegistrationPageLocators.REGISTRATION_BUTTON)
 
     def get_registration_successful_h1(self):
         return WebDriverWait(self.driver, 60).until(
             expected_conditions.visibility_of_element_located((By.XPATH, "//div[@id='content']/p")))
 
-    # Действия!!!!!!!!!!!!!!!!!!!!
+    # Действия
     def fill_required_fields(self):
         """Заполнить обязательные поля"""
         global region_text

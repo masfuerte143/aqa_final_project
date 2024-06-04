@@ -2,6 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 
+from base.locators import CheckoutPageLocators
 from pages.base_page import BasePage
 from pages.registration_page import RegistrationPage
 
@@ -12,30 +13,30 @@ class CheckoutPage(BasePage):
 
     # Геттеры
     def get_ship_first_name(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='shipping_address_firstname']").get_attribute(
+        return self.driver.find_element(*CheckoutPageLocators.SHIP_FIRST_NAME).get_attribute(
             "value")
 
     def get_ship_last_name(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='shipping_address_lastname']").get_attribute(
+        return self.driver.find_element(*CheckoutPageLocators.SHIP_LAST_NAME).get_attribute(
             "value")
 
     def get_ship_region(self):
-        return self.driver.find_element(By.XPATH, "(//option[@selected='selected'])[2]").text
+        return self.driver.find_element(*CheckoutPageLocators.SHIP_REGION).text
 
     def get_city(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='shipping_address_city']").get_attribute("value")
+        return self.driver.find_element(*CheckoutPageLocators.SHIP_CITY).get_attribute("value")
 
     def get_delivery_for_moscow(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='dostavkaplus.sh7']")
+        return self.driver.find_element(*CheckoutPageLocators.MSK_DELIVERY)
 
     def get_fact_pay(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='cod']")
+        return self.driver.find_element(*CheckoutPageLocators.FACT_PAY)
 
     def get_comment_textarea(self):
-        return self.driver.find_element(By.XPATH, "//textarea[@id='comment']")
+        return self.driver.find_element(*CheckoutPageLocators.COMMENT_FIELD)
 
     def get_submit_order_button(self):
-        return self.driver.find_element(By.XPATH, "//a[@id='simplecheckout_button_confirm']")
+        return self.driver.find_element(*CheckoutPageLocators.SUBMIT_ORDER_BUTTON)
 
     # Дейсвтия
     def check_correct_user_info(self):

@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from base.locators import MatchRodsPageLocators
 from pages.base_page import BasePage
 
 
@@ -16,68 +17,64 @@ class MatchRodsPage(BasePage):
 
     # Геттеры
     def get_slider_min(self):
-        return self.driver.find_element(By.XPATH, "(//div[@role='slider'])[1]")
+        return self.driver.find_element(*MatchRodsPageLocators.SLIDER_MIN)
 
     def get_slider_max(self):
-        return self.driver.find_element(By.XPATH, "(//div[@role='slider'])[2]")
+        return self.driver.find_element(*MatchRodsPageLocators.SLIDER_MAX)
 
     def get_manufacturer_checkbox(self):
-        return self.driver.find_element(By.XPATH, "//span[contains(text(), 'Flagman')]")
+        return self.driver.find_element(*MatchRodsPageLocators.MANUFACTURER_CHECKBOX)
 
     def get_manufacturer_checkbox_selected(self):
-        return self.driver.find_element(By.XPATH, "//button[@data-value-id='36']").get_attribute('class')
+        return self.driver.find_element(*MatchRodsPageLocators.MANUFACTURER_CHECKBOX_SELECTED).get_attribute('class')
 
     def get_presence_true_radio(self):
-        return self.driver.find_element(By.XPATH, "//span[contains(text(), 'Есть в наличии')]")
+        return self.driver.find_element(*MatchRodsPageLocators.PRESENCE_TRUE_RADIO)
 
     def get_presence_true_radio_selected(self):
-        return self.driver.find_element(By.XPATH, "//button[@id='ocf-v-3-0-2-1']").get_attribute('class')
+        return self.driver.find_element(*MatchRodsPageLocators.PRESENCE_TRUE_RADIO_SELECTED).get_attribute('class')
 
     def get_expand_button(self):
-        return self.driver.find_element(By.XPATH, "//span[contains(text(), 'Показать еще 14 фильтров ')]")
+        return self.driver.find_element(*MatchRodsPageLocators.EXPAND_BUTTON)
 
     def get_match_rods_checkbox(self):
         return WebDriverWait(self.driver, 60).until(
             expected_conditions.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'Матчевое')]")))
 
     def get_match_rods_checkbox_selected(self):
-        return self.driver.find_element(By.XPATH, "//button[@id='ocf-v-3-0-2-1']").get_attribute('class')
+        return self.driver.find_element(*MatchRodsPageLocators.MATCH_RODS_CHECKBOX_SELECTED).get_attribute('class')
 
     def get_submit_search_button(self):
         return WebDriverWait(self.driver, 60).until(
             expected_conditions.element_to_be_clickable((By.XPATH, "(//button[contains(text(), 'Показать')])[2]")))
 
     def get_manufacturer_title_after_search(self):
-        return self.driver.find_element(By.XPATH,
-                                        "(//div[@class='ocf-selected-card ocf-desktop']//button)[1]/span").text
+        return self.driver.find_element(*MatchRodsPageLocators.MANUFACTURER_TITLE_AFTER_SEARCH).text
 
     def get_price_after_search(self):
-        return self.driver.find_element(By.XPATH,
-                                        "(//div[@class='ocf-selected-card ocf-desktop']//button)[2]/span").text
+        return self.driver.find_element(*MatchRodsPageLocators.PRICE_AFTER_SEARCH).text
 
     def get_presence_after_search(self):
-        return self.driver.find_element(By.XPATH,
-                                        "(//div[@class='ocf-selected-card ocf-desktop']//button)[3]/span").text
+        return self.driver.find_element(*MatchRodsPageLocators.PRESENCE_AFTER_SEARCH).text
 
     def get_type_rods_after_search(self):
-        return self.driver.find_element(By.XPATH,
-                                        "(//div[@class='ocf-selected-card ocf-desktop']//button)[4]/span").text
+        return self.driver.find_element(*MatchRodsPageLocators.RODS_TYPE_AFTER_SEARCH).text
 
     def get_first_rods_add_button(self):
-        return self.driver.find_element(By.XPATH, "(//div[@class='cart']/button)[1]")
+        return self.driver.find_element(*MatchRodsPageLocators.FIRST_SEARCH_RESULT_ADD_BUTTON)
 
     def get_first_rods_price(self):
-        return self.driver.find_element(By.XPATH, "(//div[@class='price'])[1]").text
+        return self.driver.find_element(*MatchRodsPageLocators.FIRST_SEARCH_RESULT_PRICE).text
 
     def get_continue_shopping_button(self):
         return WebDriverWait(self.driver, 60).until(
             expected_conditions.element_to_be_clickable((By.XPATH, "//button[@class='btn-shopping']")))
 
     def get_cart_dropdown(self):
-        return self.driver.find_element(By.XPATH, "//div[@id='cart']")
+        return self.driver.find_element(*MatchRodsPageLocators.CART_DROPDOWN)
 
     def get_rods_price_in_basket(self):
-        return self.driver.find_element(By.XPATH, "(//td[@class='text-right'])[2]").text
+        return self.driver.find_element(*MatchRodsPageLocators.PRICE_IN_BASKET).text
 
     # Действия
     def choose_price(self):

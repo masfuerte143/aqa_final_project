@@ -5,6 +5,8 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from transliterate import translit
 
+from base.locators import BasePageLocators
+
 
 class BasePage():
     def __init__(self, driver):
@@ -23,34 +25,34 @@ class BasePage():
     # Геттеры
 
     def get_login_button(self):
-        return self.driver.find_element(By.XPATH, "(//button[@data-toggle='dropdown'])[2]")
+        return self.driver.find_element(*BasePageLocators.LOGIN_BUTTON)
 
     def get_registration_link(self):
-        return self.driver.find_element(By.XPATH, "//a[@class='btn-register']")
+        return self.driver.find_element(*BasePageLocators.REGISTRATION_LINK)
 
     def get_catalog_button(self):
-        return self.driver.find_element(By.XPATH, "(//div[@class='container']//button)[7]")
+        return self.driver.find_element(*BasePageLocators.CATALOG_BUTTON)
 
     def get_float_section(self):
-        return self.driver.find_element(By.XPATH, "//ul[@id='menu-vertical-list']/li[5]")
+        return self.driver.find_element(*BasePageLocators.FLOAT_SECTION)
 
     def get_float_rods_section(self):
-        return self.driver.find_element(By.LINK_TEXT, "Поплавочные удилища")
+        return self.driver.find_element(*BasePageLocators.FLOAT_RODS_SECTION)
 
     def get_match_rods_section(self):
-        return self.driver.find_element(By.LINK_TEXT, "Матчевые удилища")
+        return self.driver.find_element(*BasePageLocators.MATCH_RODS_SECTION)
 
     def get_match_rods_section_title(self):
-        return self.driver.find_element(By.XPATH, "//h1").text
+        return self.driver.find_element(*BasePageLocators.MATCH_RODS_SECTION_TITLE).text
 
     def get_cart_dropdown(self):
-        return self.driver.find_element(By.XPATH, "//div[@id='cart']")
+        return self.driver.find_element(*BasePageLocators.CART_DROPDOWN)
 
     def get_checkout_button(self):
-        return self.driver.find_element(By.XPATH, "//a[@class='btn btn-shopping']")
+        return self.driver.find_element(*BasePageLocators.CHECKOUT_BUTTON)
 
     def get_checkout_h1(self):
-        return self.driver.find_element(By.XPATH, "//h1").text
+        return self.driver.find_element(*BasePageLocators.CHECKOUT_H1).text
 
     # Действия
 
