@@ -4,6 +4,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from base.data_tests import DataTests
 from base.locators import RegistrationPageLocators
 from pages.base_page import BasePage
 
@@ -56,16 +57,16 @@ class RegistrationPage(BasePage):
     def fill_required_fields(self):
         """Заполнить обязательные поля"""
         global region_text
-        self.get_first_name_filed().send_keys(BasePage.first_name)
-        self.get_last_name_filed().send_keys(BasePage.last_name)
-        self.get_email_filed().send_keys(BasePage.email)
-        self.get_phone_filed().send_keys(BasePage.phone)
-        self.get_password_filed().send_keys(BasePage.password)
-        self.get_confirm_password_filed().send_keys(BasePage.password)
+        self.get_first_name_filed().send_keys(DataTests.first_name)
+        self.get_last_name_filed().send_keys(DataTests.last_name)
+        self.get_email_filed().send_keys(DataTests.email)
+        self.get_phone_filed().send_keys(DataTests.phone)
+        self.get_password_filed().send_keys(DataTests.password)
+        self.get_confirm_password_filed().send_keys(DataTests.password)
         self.get_region_selector().click()
         self.get_region_moscow().click()
         region_text = self.get_region_moscow().text
-        self.get_city_field().send_keys(BasePage.city_text)
+        self.get_city_field().send_keys(DataTests.city_text)
         self.get_subscription_no().click()
         return region_text
 

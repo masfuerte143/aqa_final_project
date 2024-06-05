@@ -1,17 +1,16 @@
 from selenium import webdriver
 
+from base.data_tests import Links
 from pages.base_page import BasePage
 from pages.checkout_page import CheckoutPage
 from pages.match_rods_page import MatchRodsPage
 from pages.registration_page import RegistrationPage
 
-base_url = "https://f-fishing.ru/"
-
 
 def test_customer_flow():
     driver = webdriver.Chrome()  # Открываем браузер
     driver.maximize_window()
-    driver.get(base_url)
+    driver.get(Links.base_url)
     base_page = BasePage(driver)
     registration_page = RegistrationPage(driver)
     match_rods_page = MatchRodsPage(driver)

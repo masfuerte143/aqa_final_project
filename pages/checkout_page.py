@@ -1,3 +1,4 @@
+from base.data_tests import DataTests
 from base.locators import CheckoutPageLocators
 from pages.base_page import BasePage
 from pages.registration_page import RegistrationPage
@@ -43,10 +44,10 @@ class CheckoutPage(BasePage):
 
     def check_correct_user_info(self):
         rp = RegistrationPage(self.driver)
-        assert self.get_ship_first_name() == BasePage.first_name, "Неверное имя"
-        assert self.get_ship_last_name() == BasePage.last_name, "Неверная фамилия"
+        assert self.get_ship_first_name() == DataTests.first_name, "Неверное имя"
+        assert self.get_ship_last_name() == DataTests.last_name, "Неверная фамилия"
         assert self.get_ship_region() == rp.get_region_moscow().text, "Неверный регион"
-        assert self.get_city() == BasePage.city_text, "Неверный город"
+        assert self.get_city() == DataTests.city_text, "Неверный город"
 
     def change_delivery(self):
         self.get_delivery_for_moscow().click()
