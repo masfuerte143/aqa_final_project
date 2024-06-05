@@ -43,7 +43,6 @@ class MatchRodsPageLocators():
     FIRST_SEARCH_RESULT_ADD_BUTTON = (By.XPATH, "(//div[@class='cart']/button)[1]")
     FIRST_SEARCH_RESULT_PRICE = (By.XPATH, "(//div[@class='price'])[1]")
     CONTINUE_BUTTON = (By.XPATH, "//button[@class='btn-shopping']")
-    CART_DROPDOWN = (By.XPATH, "//div[@id='cart']")
     PRICE_IN_BASKET = (By.XPATH, "(//td[@class='text-right'])[2]")
 
 
@@ -59,3 +58,4 @@ class RegistrationPageLocators():
     CITY_FIELD = (By.XPATH, "//input[@id='register_city']")
     NO_SUBCR_RADIO = (By.XPATH, "//input[@id='register_newsletter_1']")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "#simpleregister_button_confirm")
+    REGISTRATION_SUCCESSFUL = (By.XPATH, "//div[@id='content']/p")

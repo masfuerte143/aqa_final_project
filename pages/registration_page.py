@@ -1,7 +1,6 @@
 import time
 
 from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -51,7 +50,7 @@ class RegistrationPage(BasePage):
 
     def get_registration_successful_h1(self):
         return WebDriverWait(self.driver, 60).until(
-            expected_conditions.visibility_of_element_located((By.XPATH, "//div[@id='content']/p")))
+            expected_conditions.visibility_of_element_located(RegistrationPageLocators.REGISTRATION_SUCCESSFUL))
 
     # Действия
     def fill_required_fields(self):

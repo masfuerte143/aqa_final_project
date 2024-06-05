@@ -39,14 +39,14 @@ class MatchRodsPage(BasePage):
 
     def get_match_rods_checkbox(self):
         return WebDriverWait(self.driver, 60).until(
-            expected_conditions.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'Матчевое')]")))
+            expected_conditions.element_to_be_clickable(MatchRodsPageLocators.MATCH_RODS_CHECKBOX))
 
     def get_match_rods_checkbox_selected(self):
         return self.driver.find_element(*MatchRodsPageLocators.MATCH_RODS_CHECKBOX_SELECTED).get_attribute('class')
 
     def get_submit_search_button(self):
         return WebDriverWait(self.driver, 60).until(
-            expected_conditions.element_to_be_clickable((By.XPATH, "(//button[contains(text(), 'Показать')])[2]")))
+            expected_conditions.element_to_be_clickable(MatchRodsPageLocators.SUBMIT_SEARCH_BUTTON))
 
     def get_manufacturer_title_after_search(self):
         return self.driver.find_element(*MatchRodsPageLocators.MANUFACTURER_TITLE_AFTER_SEARCH).text
@@ -68,10 +68,7 @@ class MatchRodsPage(BasePage):
 
     def get_continue_shopping_button(self):
         return WebDriverWait(self.driver, 60).until(
-            expected_conditions.element_to_be_clickable((By.XPATH, "//button[@class='btn-shopping']")))
-
-    def get_cart_dropdown(self):
-        return self.driver.find_element(*MatchRodsPageLocators.CART_DROPDOWN)
+            expected_conditions.element_to_be_clickable(MatchRodsPageLocators.CONTINUE_BUTTON))
 
     def get_rods_price_in_basket(self):
         return self.driver.find_element(*MatchRodsPageLocators.PRICE_IN_BASKET).text
@@ -135,7 +132,6 @@ class MatchRodsPage(BasePage):
         """Добавить товар в корзину"""
         self.get_first_rods_add_button().click()
         self.get_continue_shopping_button().click()
-        self.get_cart_dropdown().click()
+        BasePage.get_cart_dropdown(self).click()
         assert self.get_first_rods_price() == self.get_rods_price_in_basket(), "Товар не добавился"
         self.driver.refresh()
-
