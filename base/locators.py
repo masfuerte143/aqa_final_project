@@ -11,10 +11,10 @@ class BasePageLocators():
     MATCH_RODS_SECTION_TITLE = (By.XPATH, "//h1")
     CART_DROPDOWN = (By.XPATH, "//div[@id='cart']")
     CHECKOUT_BUTTON = (By.XPATH, "//a[@class='btn btn-shopping']")
-    CHECKOUT_H1 = (By.XPATH, "//h1")
 
 
 class CheckoutPageLocators():
+    CHECKOUT_H1 = (By.XPATH, "//h1")
     SHIP_FIRST_NAME = (By.XPATH, "//input[@id='shipping_address_firstname']")
     SHIP_LAST_NAME = (By.XPATH, "//input[@id='shipping_address_lastname']")
     SHIP_REGION = (By.XPATH, "(//option[@selected='selected'])[2]")

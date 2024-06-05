@@ -1,7 +1,3 @@
-import time
-
-from selenium.webdriver.common.by import By
-
 from base.locators import CheckoutPageLocators
 from pages.base_page import BasePage
 from pages.registration_page import RegistrationPage
@@ -12,6 +8,9 @@ class CheckoutPage(BasePage):
         super().__init__(driver)
 
     # Геттеры
+    def get_checkout_h1(self):
+        return self.driver.find_element(*CheckoutPageLocators.CHECKOUT_H1).text
+
     def get_ship_first_name(self):
         return self.driver.find_element(*CheckoutPageLocators.SHIP_FIRST_NAME).get_attribute(
             "value")
@@ -39,6 +38,9 @@ class CheckoutPage(BasePage):
         return self.driver.find_element(*CheckoutPageLocators.SUBMIT_ORDER_BUTTON)
 
     # Дейсвтия
+    def checkout_assertion(self):
+        assert self.get_checkout_h1() == "Оформление заказа", "Неудачный переход"
+
     def check_correct_user_info(self):
         rp = RegistrationPage(self.driver)
         assert self.get_ship_first_name() == BasePage.first_name, "Неверное имя"

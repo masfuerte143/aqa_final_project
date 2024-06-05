@@ -32,6 +32,7 @@ def test_customer_flow():
     match_rods_page.check_submitting_filters()
     match_rods_page.add_rods_in_basket()  # Добавляем в корзину
     base_page.go_to_checkout()  # Переходим к оформлению
+    checkout_page.checkout_assertion()
     checkout_page.check_correct_user_info()  # Сверяем информацию
     checkout_page.change_delivery()  # Выбираем способ доставки
     checkout_page.change_payment()  # Выбираем способ оплаты

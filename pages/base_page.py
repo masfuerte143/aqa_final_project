@@ -2,7 +2,6 @@ import random
 
 from faker import Faker
 from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
 from transliterate import translit
 
 from base.locators import BasePageLocators
@@ -51,9 +50,6 @@ class BasePage():
     def get_checkout_button(self):
         return self.driver.find_element(*BasePageLocators.CHECKOUT_BUTTON)
 
-    def get_checkout_h1(self):
-        return self.driver.find_element(*BasePageLocators.CHECKOUT_H1).text
-
     # Действия
 
     def click_login_button(self):
@@ -80,4 +76,3 @@ class BasePage():
         """Перейти к оформлению"""
         self.get_cart_dropdown().click()
         self.get_checkout_button().click()
-        assert self.get_checkout_h1() == "Оформление заказа", "Неудачный переход"
