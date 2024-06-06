@@ -1,10 +1,8 @@
-import time
-
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from base.data_tests import DataTests
+from base.data_tests import DataTests, ProjectPaths
 from base.locators import RegistrationPageLocators
 from pages.base_page import BasePage
 
@@ -79,7 +77,6 @@ class RegistrationPage(BasePage):
         """Проверить, что регистрация прошла успешно"""
         assert self.get_registration_successful_h1().text == "Поздравляем! Ваш Личный Кабинет был успешно создан.", \
             "Неуспешная регистрация"
-        time.sleep(15)
 
     def registration(self):
         """Зарегистрироваться"""
@@ -88,3 +85,4 @@ class RegistrationPage(BasePage):
         self.fill_required_fields()
         self.click_registration_button()
         self.check_registration_successful()
+        BasePage.take_screenshot(self, ProjectPaths.registration_screens_path, action_name="RegistrationDone")

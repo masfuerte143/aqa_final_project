@@ -1,5 +1,8 @@
+import datetime
+
 from selenium.webdriver import ActionChains
 
+from base.data_tests import ProjectPaths
 from base.locators import BasePageLocators
 
 
@@ -67,3 +70,8 @@ class BasePage():
         """Перейти в раздел матчевых удилищ"""
         self.open_catalog_in_header()
         self.go_to_match_rods_section()
+        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="MatchRodsOpened")
+
+    def take_screenshot(self, path, action_name):
+        screen_name = f"Screenshot_{action_name}_{datetime.datetime.now().strftime("%Y.%m.%d-%H.%M.%S")}.png"
+        self.driver.save_screenshot(path + screen_name)

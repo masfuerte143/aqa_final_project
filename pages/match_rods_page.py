@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from base.data_tests import ProjectPaths
 from base.locators import MatchRodsPageLocators
 from pages.base_page import BasePage
 
@@ -131,6 +132,7 @@ class MatchRodsPage(BasePage):
         BasePage.get_cart_dropdown(self).click()
         assert self.get_first_rods_price() == self.get_rods_price_in_basket(), "Товар не добавился"
         self.driver.refresh()
+        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="RodsAdded")
 
     def search_with_filters(self):
         """Выполнить поиск по фильтрам"""
@@ -141,3 +143,4 @@ class MatchRodsPage(BasePage):
         self.choose_rods()
         self.click_pop_up_submit_search()
         self.check_submitting_filters()
+        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="SearchDone")

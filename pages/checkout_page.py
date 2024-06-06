@@ -1,4 +1,4 @@
-from base.data_tests import DataTests
+from base.data_tests import DataTests, ProjectPaths
 from base.locators import CheckoutPageLocators
 from pages.base_page import BasePage
 from pages.registration_page import RegistrationPage
@@ -66,6 +66,7 @@ class CheckoutPage(BasePage):
     def input_comment(self):
         """Заполнить поле комментария"""
         self.get_comment_textarea().send_keys("Оставить у двери")
+        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="CommentFilled")
 
     def submit_order(self):
         """Подтвердить заказ"""

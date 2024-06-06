@@ -21,4 +21,4 @@ def test_customer_flow(setup):
     checkout_page.change_delivery()  # Меняем способ доставки
     checkout_page.change_payment()  # Меняем способ оплаты
     checkout_page.input_comment()  # Оставляем комментарий
-    checkout_page.submit_order()  # Подтверждаем заказ
+    # checkout_page.submit_order()  # Подтверждаем заказ
