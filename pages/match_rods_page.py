@@ -11,10 +11,6 @@ class MatchRodsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    manufacturer_text = ""
-    min_price = ""
-    max_price = ""
-
     # Геттеры
     def get_slider_min(self):
         return self.driver.find_element(*MatchRodsPageLocators.SLIDER_MIN)
@@ -135,3 +131,12 @@ class MatchRodsPage(BasePage):
         BasePage.get_cart_dropdown(self).click()
         assert self.get_first_rods_price() == self.get_rods_price_in_basket(), "Товар не добавился"
         self.driver.refresh()
+
+    def search_with_filters(self):
+        self.choose_price()
+        self.choose_manufacturer()
+        self.choose_presence_true()
+        self.expand_hidden_filters()
+        self.choose_rods()
+        self.click_pop_up_submit_search()
+        self.check_submitting_filters()

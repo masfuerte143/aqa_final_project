@@ -13,8 +13,6 @@ class RegistrationPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    region_text = ""
-
     # Геттеры
     def get_first_name_filed(self):
         return self.driver.find_element(*RegistrationPageLocators.FIRST_NAME_FIELD)
@@ -82,3 +80,10 @@ class RegistrationPage(BasePage):
         assert self.get_registration_successful_h1().text == "Поздравляем! Ваш Личный Кабинет был успешно создан.", \
             "Неуспешная регистрация"
         time.sleep(15)
+
+    def registration(self):
+        self.click_login_button()
+        self.click_registration()
+        self.fill_required_fields()
+        self.click_registration_button()
+        self.check_registration_successful()

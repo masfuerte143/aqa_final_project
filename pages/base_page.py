@@ -62,3 +62,7 @@ class BasePage():
         """Перейти к оформлению"""
         self.get_cart_dropdown().click()
         self.get_checkout_button().click()
+
+    def open_match_rods(self):
+        self.open_catalog_in_header()
+        self.go_to_match_rods_section()

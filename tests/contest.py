@@ -1,8 +1,6 @@
 import pytest
 from selenium import webdriver
 
-from base.data_tests import Links
-
 
 @pytest.fixture(scope="function")
 def setup():
