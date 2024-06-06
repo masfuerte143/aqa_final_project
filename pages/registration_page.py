@@ -82,6 +82,7 @@ class RegistrationPage(BasePage):
         time.sleep(15)
 
     def registration(self):
+        """Зарегистрироваться"""
         self.click_login_button()
         self.click_registration()
         self.fill_required_fields()

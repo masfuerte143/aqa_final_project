@@ -43,6 +43,7 @@ class CheckoutPage(BasePage):
         assert self.get_checkout_h1() == "Оформление заказа", "Неудачный переход"
 
     def check_correct_user_info(self):
+        """Проверить корректность информации пльзователя"""
         rp = RegistrationPage(self.driver)
         self.checkout_assertion()
         assert self.get_ship_first_name() == DataTests.first_name, "Неверное имя"
@@ -51,17 +52,21 @@ class CheckoutPage(BasePage):
         assert self.get_city() == DataTests.city_text, "Неверный город"
 
     def change_delivery(self):
+        """Изменить способ доставки"""
         self.get_delivery_for_moscow().click()
         for_moscow_checked = self.get_delivery_for_moscow().get_attribute("checked")
         assert for_moscow_checked == "true", "Доставка не проставилась"
 
     def change_payment(self):
+        """Изменить способ оплаты"""
         self.get_fact_pay().click()
         for_moscow_checked = self.get_fact_pay().get_attribute("checked")
         assert for_moscow_checked == "true", "Оплата не изменилась"
 
     def input_comment(self):
+        """Заполнить поле комментария"""
         self.get_comment_textarea().send_keys("Оставить у двери")
 
     def submit_order(self):
+        """Подтвердить заказ"""
         self.get_submit_order_button().click()

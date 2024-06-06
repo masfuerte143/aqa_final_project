@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators():
+    """Локаторы BasePage"""
     LOGIN_BUTTON = (By.XPATH, "(//button[@data-toggle='dropdown'])[2]")
     REGISTRATION_LINK = (By.XPATH, "//a[@class='btn-register']")
     CATALOG_BUTTON = (By.XPATH, "(//div[@class='container']//button)[7]")
@@ -14,6 +15,7 @@ class BasePageLocators():
 
 
 class CheckoutPageLocators():
+    """Локаторы CheckoutPage"""
     CHECKOUT_H1 = (By.XPATH, "//h1")
     SHIP_FIRST_NAME = (By.XPATH, "//input[@id='shipping_address_firstname']")
     SHIP_LAST_NAME = (By.XPATH, "//input[@id='shipping_address_lastname']")
@@ -26,6 +28,7 @@ class CheckoutPageLocators():
 
 
 class MatchRodsPageLocators():
+    """Локаторы MatchRodsPage"""
     SLIDER_MIN = (By.XPATH, "(//div[@role='slider'])[1]")
     SLIDER_MAX = (By.XPATH, "(//div[@role='slider'])[2]")
     MANUFACTURER_CHECKBOX = (By.XPATH, "//span[contains(text(), 'Flagman')]")
@@ -47,6 +50,7 @@ class MatchRodsPageLocators():
 
 
 class RegistrationPageLocators():
+    """Локаторы RegistrationPage"""
     FIRST_NAME_FIELD = (By.XPATH, "//input[@id='register_firstname']")
     LAST_NAME_FIELD = (By.XPATH, "//input[@id='register_lastname']")
     EMAIL_FIELD = (By.XPATH, "//input[@id='register_email']")

@@ -133,6 +133,7 @@ class MatchRodsPage(BasePage):
         self.driver.refresh()
 
     def search_with_filters(self):
+        """Выполнить поиск по фильтрам"""
         self.choose_price()
         self.choose_manufacturer()
         self.choose_presence_true()

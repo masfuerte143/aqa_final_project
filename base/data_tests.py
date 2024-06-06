@@ -5,11 +5,12 @@ from transliterate import translit
 
 
 class Links():
+    """Ссылки"""
     base_url = "https://f-fishing.ru/"
 
 
-# Тестовые данные
 class DataTests():
+    """Тестовые данные"""
     fake = Faker("ru_RU")
     first_name = fake.first_name_male()
     last_name = fake.last_name_male()
