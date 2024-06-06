@@ -17,8 +17,8 @@ def test_customer_flow(setup):
     match_rods_page.search_with_filters()  # Выполняем поиск, используя фильтры
     match_rods_page.add_rods_in_basket()  # Добавляем товар в корзину
     base_page.go_to_checkout()  # Открываем браузер
-    checkout_page.check_correct_user_info() # Проверяем информацию
-    checkout_page.change_delivery() # Меняем способ доставки
-    checkout_page.change_payment() # Меняем способ оплаты
-    checkout_page.input_comment() # Оставляем комментарий
-    checkout_page.submit_order() # Подтверждаем заказ
+    checkout_page.check_correct_user_info()  # Проверяем информацию
+    checkout_page.change_delivery()  # Меняем способ доставки
+    checkout_page.change_payment()  # Меняем способ оплаты
+    checkout_page.input_comment()  # Оставляем комментарий
+    checkout_page.submit_order()  # Подтверждаем заказ
