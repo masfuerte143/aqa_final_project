@@ -5,16 +5,15 @@ from pages.base_page import BasePage
 from pages.checkout_page import CheckoutPage
 from pages.match_rods_page import MatchRodsPage
 from pages.registration_page import RegistrationPage
+from tests.contest import setup
 
 
-def test_customer_flow():
-    driver = webdriver.Chrome()  # Открываем браузер
-    driver.maximize_window()
-    driver.get(Links.base_url)
-    base_page = BasePage(driver)
-    registration_page = RegistrationPage(driver)
-    match_rods_page = MatchRodsPage(driver)
-    checkout_page = CheckoutPage(driver)
+def test_customer_flow(setup):
+    setup.get(Links.base_url)
+    base_page = BasePage(setup)
+    registration_page = RegistrationPage(setup)
+    match_rods_page = MatchRodsPage(setup)
+    checkout_page = CheckoutPage(setup)
     registration_page.click_login_button()  # Регистрируемся
     registration_page.click_registration()
     registration_page.fill_required_fields()
