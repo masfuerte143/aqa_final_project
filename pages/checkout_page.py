@@ -44,6 +44,7 @@ class CheckoutPage(BasePage):
 
     def check_correct_user_info(self):
         rp = RegistrationPage(self.driver)
+        self.checkout_assertion()
         assert self.get_ship_first_name() == DataTests.first_name, "Неверное имя"
         assert self.get_ship_last_name() == DataTests.last_name, "Неверная фамилия"
         assert self.get_ship_region() == rp.get_region_moscow().text, "Неверный регион"

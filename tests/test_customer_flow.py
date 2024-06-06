@@ -7,19 +7,18 @@ from tests.contest import setup
 
 
 def test_customer_flow(setup):
-    setup.get(Links.base_url)
     base_page = BasePage(setup)
     registration_page = RegistrationPage(setup)
     match_rods_page = MatchRodsPage(setup)
     checkout_page = CheckoutPage(setup)
-    registration_page.registration()
-    base_page.open_match_rods()
-    match_rods_page.search_with_filters()
-    match_rods_page.add_rods_in_basket()
-    base_page.go_to_checkout()
-    checkout_page.checkout_assertion()
-    checkout_page.check_correct_user_info()
-    checkout_page.change_delivery()
-    checkout_page.change_payment()
-    checkout_page.input_comment()
-    checkout_page.submit_order()
+    setup.get(Links.base_url)  # Открываем браузер
+    registration_page.registration()  # Регистриуемся
+    base_page.open_match_rods()  # Переходимв раздел с матчевыми удилищами
+    match_rods_page.search_with_filters()  # Выполняем поиск, используя фильтры
+    match_rods_page.add_rods_in_basket()  # Добавляем товар в корзину
+    base_page.go_to_checkout()  # Открываем браузер
+    checkout_page.check_correct_user_info() # Проверяем информацию
+    checkout_page.change_delivery() # Меняем способ доставки
+    checkout_page.change_payment() # Меняем способ оплаты
+    checkout_page.input_comment() # Оставляем комментарий
+    checkout_page.submit_order() # Подтверждаем заказ
