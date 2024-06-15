@@ -48,6 +48,21 @@ class BasePage:
     def get_search_button(self):
         return self.driver.find_element(*BasePageLocators.SEARCH_BUTTON)
 
+    def get_promo_text_in_footer_1(self):
+        return self.driver.find_element(*BasePageLocators.FOOTER_PROMO_TEXT_1)
+
+    def get_promo_text_in_footer_2(self):
+        return self.driver.find_element(*BasePageLocators.FOOTER_PROMO_TEXT_2)
+
+    def get_work_time(self):
+        return self.driver.find_element(*BasePageLocators.WORK_TIME_TEXT)
+
+    def get_without_holidays(self):
+        return self.driver.find_element(*BasePageLocators.WITHOUT_HOLIDAYS_TEXT)
+
+    def get_footer_copyright(self):
+        return self.driver.find_element(*BasePageLocators.COPYRIGHT)
+
     # Actions and Methods
 
     def click_login_button(self):
@@ -106,3 +121,33 @@ class BasePage:
         """Выполнить поиск"""
         self.fill_search_filed()
         self.click_search_button()
+
+    def assertion_footer_promo_text_1(self):
+        """Сравнить первую строку промо"""
+        assert self.get_promo_text_in_footer_1().text == "Хотите быть в курсе всех акций и скидок?", "Первая строка промо отсутствует или не совпадет"
+
+    def assertion_footer_promo_text_2(self):
+        """Сравнить вторую строку промо"""
+        assert self.get_promo_text_in_footer_2().text == "Подпишитесь на нашу рассылку", "Вторая строка промо отсутствует или не совпадет"
+
+    def check_footer_promo_text(self):
+        """Проверить текст промо в подвале"""
+        self.assertion_footer_promo_text_1()
+        self.assertion_footer_promo_text_2()
+
+    def assertion_footer_work_times_text(self):
+        """Проверить часы работы"""
+        assert self.get_work_time().text == "10:00-19:00 Пн.-Вс.", "Часы работы отсутствуют или не совпадют"
+
+    def assertion_footer_holidays_text(self):
+        """Проверить текст Без выходных"""
+        assert self.get_without_holidays().text == "Без выходных!", "Текст отсутствует или не совпадет"
+
+    def check_footer_work_times(self):
+        """Проверить весь блок Часы работы"""
+        self.assertion_footer_work_times_text()
+        self.assertion_footer_holidays_text()
+
+    def check_footer_copyright(self):
+        """Проверить копирайт в подвале"""
+        assert self.get_footer_copyright().text == "F-fishing.ru © 2024", "Копирайт отсутствует или не совпадет"

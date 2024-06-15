@@ -15,6 +15,11 @@ class BasePageLocators:
     LOGOUT_BUTTON = (By.XPATH, "//a[contains(text(),'Выход')]")
     SEARCH_FIELD = (By.XPATH, "//input[@name='search']")
     SEARCH_BUTTON = (By.XPATH, "//button[@class='btn btn-search']")
+    FOOTER_PROMO_TEXT_1 = (By.XPATH, "//div[contains(text(),'Хотите быть в курсе всех акций и скидок?')]")
+    FOOTER_PROMO_TEXT_2 = (By.XPATH, "//div[contains(text(),'Подпишитесь на нашу рассылку')]")
+    WORK_TIME_TEXT = (By.XPATH, "//li[contains(text(), '10:00-19:00 Пн.-Вс')]")
+    WITHOUT_HOLIDAYS_TEXT = (By.XPATH, "//li[contains(text(), 'Без выходных!')]")
+    COPYRIGHT = (By.XPATH, "//div[@class='col-sm-12']/p")
 
 
 class CheckoutPageLocators:
