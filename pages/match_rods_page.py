@@ -9,9 +9,8 @@ from pages.base_page import BasePage
 
 
 class MatchRodsPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
 
+    # Getters
     def get_slider_min(self):
         return self.driver.find_element(*MatchRodsPageLocators.SLIDER_MIN)
 
@@ -69,6 +68,7 @@ class MatchRodsPage(BasePage):
     def get_rods_price_in_basket(self):
         return self.driver.find_element(*MatchRodsPageLocators.PRICE_IN_BASKET).text
 
+    # Actions and Methods
     def choose_price(self):
         """Сдвинуть ползунки селектора цены + проверка"""
         global min_price, max_price
@@ -130,7 +130,7 @@ class MatchRodsPage(BasePage):
         BasePage.get_cart_dropdown(self).click()
         assert self.get_first_rods_price() == self.get_rods_price_in_basket(), "Товар не добавился"
         self.driver.refresh()
-        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="RodsAdded")
+        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="RodsAdded")
 
     def search_with_filters(self):
         """Выполнить поиск по фильтрам"""
@@ -141,4 +141,4 @@ class MatchRodsPage(BasePage):
         self.choose_rods()
         self.click_pop_up_submit_search()
         self.check_submitting_filters()
-        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="SearchDone")
+        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="SearchDone")

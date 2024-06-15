@@ -13,6 +13,8 @@ class BasePageLocators:
     CART_DROPDOWN = (By.XPATH, "//div[@id='cart']")
     CHECKOUT_BUTTON = (By.XPATH, "//a[@class='btn btn-shopping']")
     LOGOUT_BUTTON = (By.XPATH, "//a[contains(text(),'Выход')]")
+    SEARCH_FIELD = (By.XPATH, "//input[@name='search']")
+    SEARCH_BUTTON = (By.XPATH, "//button[@class='btn btn-search']")
 
 
 class CheckoutPageLocators:
@@ -55,3 +57,7 @@ class LoginPageLocators:
     EMAIL_FIELD = (By.XPATH, "//input[@id='input-email-popup']")
     PASS_FIELD = (By.XPATH, "//input[@id='input-password-popup']")
     SUBMIT_BUTTON = (By.XPATH, "//button[@id='button-login-popup']")
+
+
+class SearchResultPageLocators:
+    FIRST_RESULT_TITLE = (By.XPATH, "(//div[@class='product-name'])[1]")

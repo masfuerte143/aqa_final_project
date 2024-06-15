@@ -4,9 +4,8 @@ from pages.base_page import BasePage
 
 
 class CheckoutPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
 
+    # Getters
     def get_checkout_h1(self):
         return self.driver.find_element(*CheckoutPageLocators.CHECKOUT_H1).text
 
@@ -36,6 +35,7 @@ class CheckoutPage(BasePage):
     def get_submit_order_button(self):
         return self.driver.find_element(*CheckoutPageLocators.SUBMIT_ORDER_BUTTON)
 
+    # Actions amd Methods
     def checkout_assertion(self):
         """Проверка, что попали на нужную страницу"""
         assert self.get_checkout_h1() == "Оформление заказа", "Неудачный переход"
@@ -63,7 +63,7 @@ class CheckoutPage(BasePage):
     def input_comment(self):
         """Заполнить поле комментария"""
         self.get_comment_textarea().send_keys("Оставить у двери")
-        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="CommentFilled")
+        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="CommentFilled")
 
     def submit_order(self):
         """Подтвердить заказ"""

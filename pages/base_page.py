@@ -2,13 +2,15 @@ import datetime
 
 from selenium.webdriver import ActionChains
 
-from base.data_tests import ProjectPaths
+from base.data_tests import ProjectPaths, DataTests
 from base.locators import BasePageLocators
 
 
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
+
+    # Getters
 
     def get_login_button(self):
         return self.driver.find_element(*BasePageLocators.LOGIN_BUTTON)
@@ -40,6 +42,14 @@ class BasePage:
     def get_logout_button(self):
         return self.driver.find_element(*BasePageLocators.LOGOUT_BUTTON)
 
+    def get_search_filed(self):
+        return self.driver.find_element(*BasePageLocators.SEARCH_FIELD)
+
+    def get_search_button(self):
+        return self.driver.find_element(*BasePageLocators.SEARCH_BUTTON)
+
+    # Actions and Methods
+
     def click_login_button(self):
         """Нажать на Личный кабинет в шапке"""
         return self.get_login_button().click()
@@ -51,6 +61,12 @@ class BasePage:
     def open_catalog_in_header(self):
         """Развернуть каталог в шапке"""
         return self.get_catalog_button().click()
+
+    def fill_search_filed(self):
+        return self.get_search_filed().send_keys(DataTests.search_ask)
+
+    def click_search_button(self):
+        return self.get_search_button().click()
 
     def go_to_match_rods_section(self):
         """Выбрать раздел матчевых удилищ в каталоге"""
@@ -69,7 +85,7 @@ class BasePage:
         """Перейти в раздел матчевых удилищ"""
         self.open_catalog_in_header()
         self.go_to_match_rods_section()
-        BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="MatchRodsOpened")
+        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="MatchRodsOpened")
 
     def take_screenshot(self, path, action_name):
         """Метод для создания скриншота"""
@@ -85,3 +101,8 @@ class BasePage:
         """Проверить, что вход выполнен удачно"""
         self.click_login_button()
         self.get_logout_button()
+
+    def do_search(self):
+        """Выполнить поиск"""
+        self.fill_search_filed()
+        self.click_search_button()

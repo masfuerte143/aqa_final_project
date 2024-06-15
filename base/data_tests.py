@@ -1,3 +1,6 @@
+import os
+
+
 class Links:
     """Ссылки"""
     base_url = "https://f-fishing.ru/"
@@ -12,8 +15,11 @@ class DataTests:
     phone = "+79161886677"
     region = "Москва"
     city = "Москва"
+    search_ask = "Катушка Shimano"
+    search_result = "SHIMANO"
 
 
 class ProjectPaths:
-    registration_screens_path = "C:\\Users\\MasFuerte\\PycharmProjects\\aqa_final_project\\screens\\registaration_screens\\"
-    other_screens_path = "C:\\Users\\MasFuerte\\PycharmProjects\\aqa_final_project\\screens\\"
+    """Пути"""
+    current_dir = os.path.dirname(__file__)
+    screens_path = os.path.join(current_dir, "screens")

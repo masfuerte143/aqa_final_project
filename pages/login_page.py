@@ -7,6 +7,7 @@ from pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
+    # Getters
     def get_email_field(self):
         return WebDriverWait(self.driver, 30).until(
             expected_conditions.element_to_be_clickable(LoginPageLocators.EMAIL_FIELD))
@@ -19,6 +20,7 @@ class LoginPage(BasePage):
         return WebDriverWait(self.driver, 30).until(
             expected_conditions.element_to_be_clickable(LoginPageLocators.SUBMIT_BUTTON))
 
+    # Actions and Methods
     def fill_email(self):
         """Заполнить имейл"""
         self.get_email_field().send_keys(DataTests.email)
