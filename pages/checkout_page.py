@@ -1,14 +1,12 @@
 from base.data_tests import DataTests, ProjectPaths
 from base.locators import CheckoutPageLocators
 from pages.base_page import BasePage
-from pages.registration_page import RegistrationPage
 
 
 class CheckoutPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    # Геттеры
     def get_checkout_h1(self):
         return self.driver.find_element(*CheckoutPageLocators.CHECKOUT_H1).text
 
@@ -38,18 +36,17 @@ class CheckoutPage(BasePage):
     def get_submit_order_button(self):
         return self.driver.find_element(*CheckoutPageLocators.SUBMIT_ORDER_BUTTON)
 
-    # Дейсвтия
     def checkout_assertion(self):
+        """Проверка, что попали на нужную страницу"""
         assert self.get_checkout_h1() == "Оформление заказа", "Неудачный переход"
 
     def check_correct_user_info(self):
         """Проверить корректность информации пльзователя"""
-        rp = RegistrationPage(self.driver)
         self.checkout_assertion()
         assert self.get_ship_first_name() == DataTests.first_name, "Неверное имя"
         assert self.get_ship_last_name() == DataTests.last_name, "Неверная фамилия"
-        assert self.get_ship_region() == rp.get_region_moscow().text, "Неверный регион"
-        assert self.get_city() == DataTests.city_text, "Неверный город"
+        assert self.get_ship_region() == DataTests.region, "Неверный регион"
+        assert self.get_city() == DataTests.city, "Неверный город"
 
     def change_delivery(self):
         """Изменить способ доставки"""

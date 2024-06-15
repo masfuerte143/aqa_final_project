@@ -12,7 +12,6 @@ class MatchRodsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    # Геттеры
     def get_slider_min(self):
         return self.driver.find_element(*MatchRodsPageLocators.SLIDER_MIN)
 
@@ -70,7 +69,6 @@ class MatchRodsPage(BasePage):
     def get_rods_price_in_basket(self):
         return self.driver.find_element(*MatchRodsPageLocators.PRICE_IN_BASKET).text
 
-    # Действия
     def choose_price(self):
         """Сдвинуть ползунки селектора цены + проверка"""
         global min_price, max_price

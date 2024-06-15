@@ -4,9 +4,8 @@ from selenium import webdriver
 
 @pytest.fixture(scope="function")
 def setup():
-    """Открывать браузер при выполнении теста"""
+    """Открывать браузер при выполнении теста и закрывать в завершение"""
     driver = webdriver.Chrome()
     driver.maximize_window()
     yield driver
-    """Закрывать браузер при выполнении теста"""
     driver.quit()

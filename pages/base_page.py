@@ -6,17 +6,15 @@ from base.data_tests import ProjectPaths
 from base.locators import BasePageLocators
 
 
-class BasePage():
+class BasePage:
     def __init__(self, driver):
         self.driver = driver
-
-    # Геттеры
 
     def get_login_button(self):
         return self.driver.find_element(*BasePageLocators.LOGIN_BUTTON)
 
-    def get_registration_link(self):
-        return self.driver.find_element(*BasePageLocators.REGISTRATION_LINK)
+    def get_login_link(self):
+        return self.driver.find_element(*BasePageLocators.LOGIN_LINK)
 
     def get_catalog_button(self):
         return self.driver.find_element(*BasePageLocators.CATALOG_BUTTON)
@@ -39,22 +37,23 @@ class BasePage():
     def get_checkout_button(self):
         return self.driver.find_element(*BasePageLocators.CHECKOUT_BUTTON)
 
-    # Действия
+    def get_logout_button(self):
+        return self.driver.find_element(*BasePageLocators.LOGOUT_BUTTON)
 
     def click_login_button(self):
-        """Кликнуть на кнопку входа в ЛК в шапке сайта"""
+        """Нажать на Личный кабинет в шапке"""
         return self.get_login_button().click()
 
-    def click_registration(self):
-        """Кликнуть на ссылку регистрации в поп апе входа в ЛК"""
-        return self.get_registration_link().click()
+    def click_log_in(self):
+        """Нажать Вход в дропдауне"""
+        return self.get_login_link().click()
 
     def open_catalog_in_header(self):
-        """Открыть каталог в шапке"""
+        """Развернуть каталог в шапке"""
         return self.get_catalog_button().click()
 
     def go_to_match_rods_section(self):
-        """Перейти в раздел с матчевыми удилищами"""
+        """Выбрать раздел матчевых удилищ в каталоге"""
         action = ActionChains(self.driver)
         action.move_to_element(self.get_float_section()).perform()
         action.move_to_element(self.get_float_rods_section()).perform()
@@ -73,5 +72,16 @@ class BasePage():
         BasePage.take_screenshot(self, ProjectPaths.other_screens_path, action_name="MatchRodsOpened")
 
     def take_screenshot(self, path, action_name):
+        """Метод для создания скриншота"""
         screen_name = f"Screenshot_{action_name}_{datetime.datetime.now().strftime("%Y.%m.%d-%H.%M.%S")}.png"
         self.driver.save_screenshot(path + screen_name)
+
+    def go_to_login(self):
+        """Перейти на страницу входа"""
+        self.click_login_button()
+        self.click_log_in()
+
+    def check_login_successfully(self):
+        """Проверить, что вход выполнен удачно"""
+        self.click_login_button()
+        self.get_logout_button()

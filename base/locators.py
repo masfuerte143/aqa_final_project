@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
-class BasePageLocators():
+class BasePageLocators:
     """Локаторы BasePage"""
     LOGIN_BUTTON = (By.XPATH, "(//button[@data-toggle='dropdown'])[2]")
-    REGISTRATION_LINK = (By.XPATH, "//a[@class='btn-register']")
+    LOGIN_LINK = (By.XPATH, "//a[@id='login-popup']")
     CATALOG_BUTTON = (By.XPATH, "(//div[@class='container']//button)[7]")
     FLOAT_SECTION = (By.XPATH, "//ul[@id='menu-vertical-list']/li[5]")
     FLOAT_RODS_SECTION = (By.LINK_TEXT, "Поплавочные удилища")
@@ -12,9 +12,10 @@ class BasePageLocators():
     MATCH_RODS_SECTION_TITLE = (By.XPATH, "//h1")
     CART_DROPDOWN = (By.XPATH, "//div[@id='cart']")
     CHECKOUT_BUTTON = (By.XPATH, "//a[@class='btn btn-shopping']")
+    LOGOUT_BUTTON = (By.XPATH, "//a[contains(text(),'Выход')]")
 
 
-class CheckoutPageLocators():
+class CheckoutPageLocators:
     """Локаторы CheckoutPage"""
     CHECKOUT_H1 = (By.XPATH, "//h1")
     SHIP_FIRST_NAME = (By.XPATH, "//input[@id='shipping_address_firstname']")
@@ -27,7 +28,7 @@ class CheckoutPageLocators():
     SUBMIT_ORDER_BUTTON = (By.XPATH, "//a[@id='simplecheckout_button_confirm']")
 
 
-class MatchRodsPageLocators():
+class MatchRodsPageLocators:
     """Локаторы MatchRodsPage"""
     SLIDER_MIN = (By.XPATH, "(//div[@role='slider'])[1]")
     SLIDER_MAX = (By.XPATH, "(//div[@role='slider'])[2]")
@@ -49,17 +50,8 @@ class MatchRodsPageLocators():
     PRICE_IN_BASKET = (By.XPATH, "(//td[@class='text-right'])[2]")
 
 
-class RegistrationPageLocators():
-    """Локаторы RegistrationPage"""
-    FIRST_NAME_FIELD = (By.XPATH, "//input[@id='register_firstname']")
-    LAST_NAME_FIELD = (By.XPATH, "//input[@id='register_lastname']")
-    EMAIL_FIELD = (By.XPATH, "//input[@id='register_email']")
-    PHONE_FIELD = (By.XPATH, "//input[@id='register_telephone']")
-    PASS_FIELD = (By.XPATH, "//input[@id='register_password']")
-    CONFIRM_PASS_FIELD = (By.XPATH, "//input[@id='register_confirm_password']")
-    REGION_SELECTOR = (By.XPATH, "//select[@id='register_zone_id']")
-    MOSCOW_IN_SELECTOR = (By.XPATH, "//option[@value='2761']")
-    CITY_FIELD = (By.XPATH, "//input[@id='register_city']")
-    NO_SUBCR_RADIO = (By.XPATH, "//input[@id='register_newsletter_1']")
-    REGISTRATION_BUTTON = (By.CSS_SELECTOR, "#simpleregister_button_confirm")
-    REGISTRATION_SUCCESSFUL = (By.XPATH, "//div[@id='content']/p")
+class LoginPageLocators:
+    """Локаторы LoginPage"""
+    EMAIL_FIELD = (By.XPATH, "//input[@id='input-email-popup']")
+    PASS_FIELD = (By.XPATH, "//input[@id='input-password-popup']")
+    SUBMIT_BUTTON = (By.XPATH, "//button[@id='button-login-popup']")
