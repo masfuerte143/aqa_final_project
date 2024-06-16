@@ -1,9 +1,12 @@
+import pytest
+
 from base.data_tests import Links
 from pages.base_page import BasePage
 from pages.search_result_page import SearchResultPage
 from tests.contest import setup
 
 
+@pytest.mark.smoke
 def test_search_in_header(setup):
     """Протестировать поиск"""
     setup.get(Links.base_url)
@@ -13,6 +16,7 @@ def test_search_in_header(setup):
     search_page.assertion_search_result()
 
 
+@pytest.mark.smoke
 def test_footer_static_text(setup):
     """Протестировать статический текст в подвале"""
     setup.get(Links.base_url)

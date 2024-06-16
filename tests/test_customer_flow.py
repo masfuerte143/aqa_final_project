@@ -1,3 +1,5 @@
+import pytest
+
 from base.data_tests import Links
 from pages.base_page import BasePage
 from pages.checkout_page import CheckoutPage
@@ -6,6 +8,7 @@ from pages.match_rods_page import MatchRodsPage
 from tests.contest import setup
 
 
+@pytest.mark.smoke
 def test_customer_flow(setup):
     """Тестирование пользовательского пути"""
     base_page = BasePage(setup)
