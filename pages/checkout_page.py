@@ -17,6 +17,9 @@ class CheckoutPage(BasePage):
         return self.driver.find_element(*CheckoutPageLocators.SHIP_LAST_NAME).get_attribute(
             "value")
 
+    def get_ship_address(self):
+        return self.driver.find_element(*CheckoutPageLocators.SHIP_ADDRESS)
+
     def get_ship_region(self):
         return self.driver.find_element(*CheckoutPageLocators.SHIP_REGION).text
 
@@ -53,6 +56,11 @@ class CheckoutPage(BasePage):
         self.get_delivery_for_moscow().click()
         for_moscow_checked = self.get_delivery_for_moscow().get_attribute("checked")
         assert for_moscow_checked == "true", "Доставка не проставилась"
+
+    def fill_ship_address(self):
+        """Заполнить поле с адресом доставки"""
+        self.get_ship_address().send_keys(DataTests.ship_address)
+        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="AddressFilled")
 
     def change_payment(self):
         """Изменить способ оплаты"""

@@ -33,6 +33,7 @@ class CheckoutPageLocators:
     FACT_PAY = (By.XPATH, "//input[@id='cod']")
     COMMENT_FIELD = (By.XPATH, "//textarea[@id='comment']")
     SUBMIT_ORDER_BUTTON = (By.XPATH, "//a[@id='simplecheckout_button_confirm']")
+    SHIP_ADDRESS = (By.XPATH, "//input[@id='shipping_address_address_1']")
 
 
 class MatchRodsPageLocators:
@@ -66,3 +67,14 @@ class LoginPageLocators:
 
 class SearchResultPageLocators:
     FIRST_RESULT_TITLE = (By.XPATH, "(//div[@class='product-name'])[1]")
+
+
+class MainPageLocators:
+    BIG_SLIDER_FIRST_ITEM = (By.XPATH, "//div[@id='slick-slide00']")
+    BIG_SLIDER_SECOND_ITEM = (By.XPATH, "//div[@id='slick-slide01']")
+    BIG_SLIDER_NEXT_BUTTON = (By.XPATH, "(//div[contains(@class,'next-prod')])[1]")
+    BIG_SLIDER_PREV_BUTTON = (By.XPATH, "(//div[contains(@class,'prev-prod')])[1]")
+    SMALL_SLIDER_FIRST_ITEM = (By.XPATH, "//div[@id='slick-slide10']")
+    SMALL_SLIDER_SECOND_ITEM = (By.XPATH, "//div[@id='slick-slide11']")
+    SMALL_SLIDER_NEXT_BUTTON = (By.XPATH, "(//div[contains(@class,'next-prod')])[2]")
+    SMALL_SLIDER_PREV_BUTTON = (By.XPATH, "(//div[contains(@class,'prev-prod')])[2]")

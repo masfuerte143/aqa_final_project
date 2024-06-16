@@ -1,5 +1,3 @@
-import pytest
-
 from base.data_tests import Links
 from pages.base_page import BasePage
 from pages.checkout_page import CheckoutPage
@@ -22,6 +20,7 @@ def test_customer_flow(setup):
     base_page.go_to_checkout()  # Переходим к оформлению
     checkout_page.check_correct_user_info()  # Проверяем информацию
     checkout_page.change_delivery()  # Меняем способ доставки
+    checkout_page.fill_ship_address()  # Заполнить адрес доставки
     checkout_page.change_payment()  # Меняем способ оплаты
     checkout_page.input_comment()  # Оставляем комментарий
     checkout_page.submit_order()  # Подтверждаем заказ

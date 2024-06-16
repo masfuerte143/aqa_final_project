@@ -15,6 +15,7 @@ class DataTests:
     phone = "+79161886677"
     region = "Москва"
     city = "Москва"
+    ship_address = "Воронежская улица, 3, Москва, 115583"
     search_ask = "Катушка Shimano"
     search_result = "SHIMANO"
 

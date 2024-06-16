@@ -150,4 +150,5 @@ class BasePage:
 
     def check_footer_copyright(self):
         """Проверить копирайт в подвале"""
+        self.get_footer_copyright()
         assert self.get_footer_copyright().text == "F-fishing.ru © 2024", "Копирайт отсутствует или не совпадет"
