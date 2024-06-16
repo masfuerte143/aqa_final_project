@@ -42,12 +42,10 @@ class MainPage(BasePage):
     def check_visibility_of_big_slider_first_item(self):
         """Проверить видимость 1 элемента в большом слайдере"""
         self.get_big_slider_first_item().is_displayed()
-        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="BigSlider1item-OK")
 
     def check_visibility_of_big_slider_second_item(self):
         """Проверить видимость 2 элемента в большом слайдере"""
         self.get_big_slider_second_item().is_displayed()
-        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="BigSlider2item-OK")
 
     def click_big_slider_next_button(self):
         """Пролистать вправо большой слайдер"""
@@ -69,7 +67,6 @@ class MainPage(BasePage):
     def check_visibility_of_small_slider_second_item(self):
         """Проверить видимость 2 элемента в маленьком слайдере"""
         self.get_small_slider_second_item().is_displayed()
-        BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="SmallSlider2item-OK")
 
     def click_small_slider_next_button(self):
         """Пролистать вправо маленький слайдер"""
