@@ -66,10 +66,12 @@ class LoginPageLocators:
 
 
 class SearchResultPageLocators:
+    """Локаторы SearchResultPage"""
     FIRST_RESULT_TITLE = (By.XPATH, "(//div[@class='product-name'])[1]")
 
 
 class MainPageLocators:
+    """Локаторы MainPage"""
     BIG_SLIDER_FIRST_ITEM = (By.XPATH, "//div[@id='slick-slide00']")
     BIG_SLIDER_SECOND_ITEM = (By.XPATH, "//div[@id='slick-slide01']")
     BIG_SLIDER_NEXT_BUTTON = (By.XPATH, "(//div[contains(@class,'next-prod')])[1]")
