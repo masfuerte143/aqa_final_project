@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from base.data_tests import Links
@@ -7,6 +8,7 @@ from tests.contest import setup
 
 
 @pytest.mark.smoke
+@allure.title("Поиск выполняется")
 def test_search_in_header(setup):
     """Протестировать поиск"""
     setup.get(Links.base_url)
@@ -17,8 +19,9 @@ def test_search_in_header(setup):
 
 
 @pytest.mark.smoke
+@allure.title("Статичный текст в подвале присутствует")
 def test_footer_static_text(setup):
-    """Протестировать статический текст в подвале"""
+    """Протестировать Статичный текст в подвале"""
     setup.get(Links.base_url)
     base_page = BasePage(setup)
     base_page.check_footer_promo_text()

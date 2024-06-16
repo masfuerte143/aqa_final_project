@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from base.data_tests import Links
@@ -9,6 +10,7 @@ from tests.contest import setup
 
 
 @pytest.mark.smoke
+@allure.title("Пользовательский сценарий для покупателя выполняется")
 def test_customer_flow(setup):
     """Тестирование пользовательского пути"""
     base_page = BasePage(setup)
