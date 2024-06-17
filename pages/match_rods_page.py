@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
@@ -123,6 +124,7 @@ class MatchRodsPage(BasePage):
         assert self.get_price_after_search() == f"от {min_price} до {max_price} р.", "Неправильная цена"
         assert self.get_type_rods_after_search() == "Матчевое", "Неправильный тип удилища"
 
+    @allure.step("Добавить товар в корзину")
     def add_rods_in_basket(self):
         """Добавить товар в корзину"""
         self.get_first_rods_add_button().click()
@@ -132,6 +134,7 @@ class MatchRodsPage(BasePage):
         self.driver.refresh()
         BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="RodsAdded")
 
+    @allure.step("Выполнить поиск используя фильтры с правой стороны страницы")
     def search_with_filters(self):
         """Выполнить поиск по фильтрам"""
         self.choose_price()

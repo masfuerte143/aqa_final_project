@@ -1,3 +1,5 @@
+import allure
+
 from base.data_tests import DataTests, ProjectPaths
 from base.locators import CheckoutPageLocators
 from pages.base_page import BasePage
@@ -43,6 +45,7 @@ class CheckoutPage(BasePage):
         """Проверка, что попали на нужную страницу"""
         assert self.get_checkout_h1() == "Оформление заказа", "Неудачный переход"
 
+    @allure.step("Проверить корректность информации о пользователе")
     def check_correct_user_info(self):
         """Проверить корректность информации пльзователя"""
         self.checkout_assertion()
@@ -51,28 +54,33 @@ class CheckoutPage(BasePage):
         assert self.get_ship_region() == DataTests.region, "Неверный регион"
         assert self.get_city() == DataTests.city, "Неверный город"
 
+    @allure.step("Изменить способ доставки")
     def change_delivery(self):
         """Изменить способ доставки"""
         self.get_delivery_for_moscow().click()
         for_moscow_checked = self.get_delivery_for_moscow().get_attribute("checked")
         assert for_moscow_checked == "true", "Доставка не проставилась"
 
+    @allure.step("Заполнить поле с адресом доставки")
     def fill_ship_address(self):
         """Заполнить поле с адресом доставки"""
         self.get_ship_address().send_keys(DataTests.ship_address)
         BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="AddressFilled")
 
+    @allure.step("Изменить способ оплаты")
     def change_payment(self):
         """Изменить способ оплаты"""
         self.get_fact_pay().click()
         for_moscow_checked = self.get_fact_pay().get_attribute("checked")
         assert for_moscow_checked == "true", "Оплата не изменилась"
 
+    @allure.step("Оставить комментарий к заказу")
     def input_comment(self):
         """Заполнить поле комментария"""
         self.get_comment_textarea().send_keys("Оставить у двери")
         BasePage.take_screenshot(self, ProjectPaths.screens_path, action_name="CommentFilled")
 
+    @allure.step("Подтвердить заказ")
     def submit_order(self):
         """Подтвердить заказ"""
         self.get_submit_order_button().click()

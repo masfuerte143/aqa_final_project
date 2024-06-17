@@ -1,5 +1,6 @@
 import datetime
 
+import allure
 from selenium.webdriver import ActionChains
 
 from base.data_tests import ProjectPaths, DataTests
@@ -91,11 +92,13 @@ class BasePage:
         self.get_match_rods_section().click()
         assert self.get_match_rods_section_title() == "Матчевые удилища", "Неудачный переход в раздел"
 
+    @allure.step("Перейти к оформлению товара из корзины в шапке")
     def go_to_checkout(self):
         """Перейти к оформлению"""
         self.get_cart_dropdown().click()
         self.get_checkout_button().click()
 
+    @allure.step("Перейти в раздел с матчевыми удилищами в каталоге из шапки")
     def open_match_rods(self):
         """Перейти в раздел матчевых удилищ"""
         self.open_catalog_in_header()
@@ -117,6 +120,7 @@ class BasePage:
         self.click_login_button()
         self.get_logout_button()
 
+    @allure.step("Выполнить поиск по запросу 'Катушка Shimano'")
     def do_search(self):
         """Выполнить поиск"""
         self.fill_search_filed()
@@ -130,6 +134,7 @@ class BasePage:
         """Сравнить вторую строку промо"""
         assert self.get_promo_text_in_footer_2().text == "Подпишитесь на нашу рассылку", "Вторая строка промо отсутствует или не совпадет"
 
+    @allure.step("В подвале присутствует текст 'Хотите быть в курсе всех акций и скидок? Подпишитесь на нашу рассылку'")
     def check_footer_promo_text(self):
         """Проверить текст промо в подвале"""
         self.assertion_footer_promo_text_1()
@@ -143,11 +148,13 @@ class BasePage:
         """Проверить текст Без выходных"""
         assert self.get_without_holidays().text == "Без выходных!", "Текст отсутствует или не совпадет"
 
+    @allure.step("В подвале присутствует текст '10:00-19:00 Пн.-Вс. Без выходных!'")
     def check_footer_work_times(self):
         """Проверить весь блок Часы работы"""
         self.assertion_footer_work_times_text()
         self.assertion_footer_holidays_text()
 
+    @allure.step("В подвале присутствует копирайт F-fishing.ru © 2024")
     def check_footer_copyright(self):
         """Проверить копирайт в подвале"""
         self.get_footer_copyright()

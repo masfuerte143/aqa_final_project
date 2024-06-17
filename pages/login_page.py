@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -34,6 +35,7 @@ class LoginPage(BasePage):
         self.get_submit_button().click()
         self.driver.refresh()
 
+    @allure.step("Авторизоваться в личном кабинете")
     def login(self):
         """Залогиниться по тестовым данным"""
         self.go_to_login()
