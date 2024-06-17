@@ -7,6 +7,8 @@ from tests.contest import setup
 
 
 @pytest.mark.regress
+@allure.parent_suite("Regress")
+@allure.suite("Главная страница")
 @allure.title("Большой слайдер на главной странице переключается")
 def test_big_slider(setup):
     """Протестировать большой слайдер"""
@@ -20,6 +22,8 @@ def test_big_slider(setup):
 
 
 @pytest.mark.regress
+@allure.parent_suite("Regress")
+@allure.suite("Главная страница")
 @allure.title("Маленький слайдер на главной странице переключается")
 def test_small_slider(setup):
     """Протестировать маленький слайдер"""

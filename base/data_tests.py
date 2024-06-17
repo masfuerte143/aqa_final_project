@@ -1,6 +1,3 @@
-import os
-
-
 class Links:
     """Ссылки"""
     base_url = "https://f-fishing.ru/"

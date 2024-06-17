@@ -8,6 +8,8 @@ from tests.contest import setup
 
 
 @pytest.mark.smoke
+@allure.parent_suite("Smoke")
+@allure.suite("Поиск")
 @allure.title("Поиск выполняется")
 def test_search_in_header(setup):
     """Протестировать поиск"""
@@ -19,6 +21,8 @@ def test_search_in_header(setup):
 
 
 @pytest.mark.smoke
+@allure.parent_suite("Smoke")
+@allure.suite("Подвал")
 @allure.title("Статичный текст в подвале присутствует")
 def test_footer_static_text(setup):
     """Протестировать Статичный текст в подвале"""

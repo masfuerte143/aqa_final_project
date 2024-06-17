@@ -10,6 +10,8 @@ from tests.contest import setup
 
 
 @pytest.mark.smoke
+@allure.parent_suite("Smoke")
+@allure.suite("Пользовательские сценарии")
 @allure.title("Пользовательский сценарий для покупателя выполняется")
 def test_customer_flow(setup):
     """Тестирование пользовательского пути"""
